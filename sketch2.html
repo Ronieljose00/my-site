@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOOR TWO</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <a style = "padding-left: 50%;" href="index.html">Back to Home</a>
+    <script>
+        let circles = [];
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            for (let x = 0; x < width; x += 40) {
+                for (let y = 0; y < height; y += 40) {
+                    circles.push({ x, y, col: color(random(255), random(255), random(255)) });
+                }
+            }
+        }
+        function draw() {
+            background(30);
+            for (let c of circles) {
+                fill(c.col);
+                ellipse(c.x, c.y, 30, 30);
+            }
+        }
+        function mousePressed() {
+            for (let c of circles) {
+                c.col = color(random(255), random(255), random(255));
+            }
+        }
+    </script>
+</body>
+</html>

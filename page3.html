@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        p {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 200%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .answer {
+            display: block;
+            margin-top: 10px;
+            font-size: 150%;
+            color: white;
+            cursor: pointer;
+        }
+
+        .answer:hover {
+            color: #f0f0f0;
+        }
+
+        .page-nav {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px; 
+        }
+
+        .page-nav a {
+            padding: 10px;
+            color: whitesmoke;
+            font-size: 100%;
+            font-weight: bold;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+        }
+
+        .page-nav a:hover {
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <p>You're doing great, keep it up: <br>
+        "I have keys, but open no locks.<br>
+        I have space, but no room.<br>
+        I can enter, but never leave. <br>
+        What am I?"
+        <br><br>
+        <span class="answer" onclick="wrongAnswer()">A piano</span>
+        <span class="answer" onclick="correctAnswer()">A computer</span>
+        <span class="answer" onclick="wrongAnswer()">A library</span>
+    </p>
+
+    <div class="page-nav">
+        <a href="index.html">Back to Home</a>
+        <a href="page2.html">Previous page</a>
+    </div>
+
+    <script>
+        let waves = [];
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            for (let i = 0; i < 5; i++) {
+                let wave = {
+                    offset: random(255),
+                    amplitude: random(80, 200),  
+                    frequency: random(0.2, 0.5),  
+                    phase: random(TWO_PI),  
+                    yOffset: height / 2,  
+                    waveSpacing: random(200, 500)  
+                };
+                waves.push(wave);
+            }
+        }
+
+        function draw() {
+            background(0);
+
+            noFill();
+            stroke(255);
+            for (let wave of waves) {
+                beginShape();
+                for (let x = 0; x < width; x++) {
+                    let y = wave.yOffset + sin((x + frameCount * wave.frequency * 10) * 0.05 + wave.offset + wave.phase) * wave.amplitude;
+                    vertex(x, y + (mouseY - height / 2) * 0.2);
+                }
+                endShape();
+            }
+        }
+
+        function correctAnswer() {
+            window.location.href = "page4.html";
+        }
+
+        function wrongAnswer() {
+            alert("Wrong, try again");
+        }
+    </script>
+</body>
+</html>

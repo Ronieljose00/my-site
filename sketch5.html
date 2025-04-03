@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Sketch</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+    <script>
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+        }
+
+        function draw() {
+            background(0);
+
+            for (let i = 0; i < 100; i++) { 
+                let x = random(width);
+                let y = random(height);
+                let d = dist(x, y, mouseX, mouseY);  
+
+                if (d < 100) {
+                    fill(random(255), random(255), random(255));
+                    noStroke();
+                    ellipse(x, y, random(20, 100));
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        p {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 200%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .answer {
+            display: block;
+            margin-top: 10px;
+            font-size: 150%;
+            color: white;
+            cursor: pointer;
+        }
+
+        .answer:hover {
+            color: #f0f0f0;
+        }
+        .page-nav {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px; 
+        }
+
+        .page-nav a {
+            padding: 10px;
+            color: whitesmoke;
+            font-size: 100%;
+            font-weight: bold;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+        }
+
+        .page-nav a:hover {
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <p>How about this one: <br>
+        "I speak without a mouth and hear without ears,<br>
+        I have no body, but I come alive with the wind.<br>
+        What am I?"
+        <br><br>
+        <span class="answer" onclick="wrongAnswer()">A shadow</span>
+        <span class="answer" onclick="wrongAnswer()">A dream</span>
+        <span class="answer" onclick="correctAnswer()">An echo</span>
+    </p>
+
+    <div class="page-nav">
+        <a href="index.html">Back to Home</a>
+        <a href="page1.html">Previous page</a>
+    </div>
+
+    <script>
+        let circles = [];
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);  
+            for (let x = 0; x < width; x += 40) {
+                for (let y = 0; y < height; y += 40) {
+                    circles.push({ x, y, col: color(random(255), random(255), random(255)) });
+                }
+            }
+
+            setInterval(changeColors, 2000);  
+        }
+
+        function changeColors() {
+            for (let c of circles) {
+                c.col = color(random(255), random(255), random(255));
+            }
+        }
+
+        function draw() {
+            background(30);  
+            for (let c of circles) {
+                fill(c.col);
+                ellipse(c.x, c.y, 30, 30);
+            }
+        }
+
+        function correctAnswer() {
+            window.location.href = "page3.html";
+        }
+
+        function wrongAnswer() {
+            alert("Wrong, try again");
+        }
+    </script>
+</body>
+</html>

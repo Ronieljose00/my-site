@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        p {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 200%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .answer {
+            display: block;
+            margin-top: 10px;
+            font-size: 150%;
+            color: white;
+            cursor: pointer;
+        }
+
+        .answer:hover {
+            color: #f0f0f0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <p>Wow, I'm surprised. <br>
+        You are smart.<br>
+        One last thing.<br>
+        You can either leave <br>
+        by clicking on "leave site" <br>
+        or you can continue <br>
+        to see some artwork. <br>
+        <BR>
+        THE CHOICE IS YOURS<BR>
+        <br>
+        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran" target="_blank">LEAVE SITE</a><br>
+        <BR>
+        <a href="FinalPage.html">CONTINUE</a>  
+    </p>
+
+
+    <script>
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            background(0);
+        }
+
+        function draw() {
+            background(0, 20); 
+            
+            for (let i = 0; i < 10; i++) { 
+                let x = random(width);
+                let y = random(height);
+                let d = dist(x, y, mouseX, mouseY);  
+
+                if (d < 150) {
+                    fill(random(255), random(255), random(255), 200);
+                    noStroke();
+                    ellipse(x, y, random(30, 80));
+                }
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+
+    
+    </script>
+</body>
+</html>

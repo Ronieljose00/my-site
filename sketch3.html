@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOOR THREE</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <a style = "padding-left: 50%;" href="index.html">Back to Home</a>
+    <script>
+        let wave = [];
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            for (let x = 0; x < width; x += 20) {
+                wave.push({ x, y: height / 2, offset: random(255) });
+            }
+        }
+        function draw() {
+            background(0);
+            noFill();
+            stroke(255);
+            beginShape();
+            for (let w of wave) {
+                let y = height / 2 + sin(frameCount * 0.05 + w.offset) * 50;
+                vertex(w.x, y + (mouseY - height / 2) * 0.2);
+            }
+            endShape();
+        }
+    </script>
+</body>
+</html>

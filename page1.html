@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        p {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 200%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            z-index: 2;
+        }
+
+        a {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            color: whitesmoke;
+            font-size: 100%;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 3;
+        }
+
+        a:hover {
+            color: #f0f0f0;
+        }
+
+        .answer {
+            display: block;
+            margin-top: 10px;
+            font-size: 150%;
+            color: white;
+            cursor: pointer;
+        }
+
+        .answer:hover {
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Answer the following riddle: <br>
+        "I can be cracked, I can be made,<br>
+        I can be told, I can be played.<br>
+        What am I?"
+        <br><br>
+        <span class="answer" onclick="correctAnswer()">A joke</span>
+        <span class="answer" onclick="wrongAnswer()">A secret</span>
+        <span class="answer" onclick="wrongAnswer()">A song</span>
+    </p>
+
+    <a href="index.html">Back to Home</a>
+
+    <script>
+        let amt = 1;
+        
+        function setup() {
+            createCanvas(windowWidth, windowHeight); 
+            noStroke();
+        }
+
+        function draw() {
+            background(0, 10);  
+            amt = map(20, 0, width, 0, 20);
+            for (let i = 0; i < amt; i++) {
+                fill(random(255), random(255), random(255));
+                triangle(random(width), random(height), random(50), random(50), random(50), random(50));
+            }
+        }
+
+        function correctAnswer() {
+            window.location.href = "page2.html";
+        }
+
+        function wrongAnswer() {
+            alert("Wrong, try again");
+        }
+    </script>
+
+</body>
+</html>

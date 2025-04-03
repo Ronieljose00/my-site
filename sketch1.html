@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOOR ONE</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <a style = "padding-left: 50%;"  href="index.html">Back to Home</a>
+    <script>
+        let amt = 1;
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            noStroke();
+        }
+        function draw() {
+            background(0,10);
+            amt = map(20, 0,width, 0,20);
+            for(let i = 0; i<amt; i++){
+                fill(random(255),random(255),random(255));
+                triangle(random(width),random(height),random(50),random(50),random(50),random(50));
+            }
+        }
+    </script>
+</body>
+</html>

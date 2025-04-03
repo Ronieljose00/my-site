@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Sketch</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+    <script>
+
+let speedX = 3
+let speedY = 3
+
+let x =-200 ;
+let y = 200
+function setup() {
+  createCanvas(600, 500);
+}
+
+function draw() {
+  background(0,200,255);
+   fill(255,255,0)
+
+  ellipse(x,y,400)
+  fill(10,20,30)
+
+   ellipse(x-100,y -20,90)
+  ellipse(x+ 100,y -20,90)
+fill(10,20,30)
+    arc(x+10, y + 50, 60, 90, 0, PI + QUARTER_PI, CHORD);
+
+  x = x+ speedX
+  y = y + speedY
+  
+  if (x>400){
+    speedX =-3
+  }
+if (y>300){
+    speedY =-3
+  }
+  if (x<200){
+    speedX = 3
+  }
+  if (y<200){
+    speedY = 3
+  }
+}
+
